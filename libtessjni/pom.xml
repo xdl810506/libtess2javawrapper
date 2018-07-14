@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ pom.xml
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+        <groupId>com.test.utils</groupId>
+        <artifactId>test</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <packaging>pom</packaging>
+    <artifactId>libtess2root</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<profiles>
+		<profile>
+		  <id>win64</id>
+		  <activation>
+			<property>
+			  <name>platform</name>
+			  <value>win64</value>
+			</property>
+		  </activation>
+		  <modules>
+			<module>win64</module>
+		  </modules>
+		</profile>
+
+		<profile>
+		  <id>linux</id>
+		  <activation>
+			<property>
+			  <name>platform</name>
+			  <value>linux</value>
+			</property>
+		  </activation>
+		  <modules>
+			<module>linux</module>
+		  </modules>
+		</profile>
+
+		<profile>
+		  <id>mac</id>
+		  <activation>
+			<property>
+			  <name>platform</name>
+			  <value>mac</value>
+			</property>
+		  </activation>
+		  <modules>
+			<module>mac</module>
+		  </modules>
+		</profile>
+	</profiles>
+</project>

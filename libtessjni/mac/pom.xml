@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ pom.xml
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.test.utils</groupId>
+        <artifactId>libtess2root</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>libtess2</artifactId>
+    <packaging>jnilib</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>native-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <compilerProvider>generic-classic</compilerProvider>
+                    <compilerExecutable>gcc</compilerExecutable>
+                    <linkerExecutable>gcc</linkerExecutable>
+                    <sources>
+                        <source>
+                            <directory>${basedir}/../src/main/jni</directory>
+                            <fileNames>
+                                <fileName>libtess2.c</fileName>
+                            </fileNames>
+                        </source>
+						<source>
+                            <directory>${basedir}/../src/main/libtess2/Source</directory>
+                            <fileNames>
+                                <fileName>tess.c</fileName>
+								<fileName>sweep.c</fileName>
+								<fileName>priorityq.c</fileName>
+								<fileName>mesh.c</fileName>
+								<fileName>geom.c</fileName>
+								<fileName>dict.c</fileName>
+								<fileName>bucketalloc.c</fileName>
+                            </fileNames>
+                        </source>
+                    </sources>
+                    <compilerStartOptions>
+                        <compilerStartOption>-I ${JAVA_HOME}/include/</compilerStartOption>
+                    </compilerStartOptions>
+                    <linkerStartOptions>
+						<linkerStartOption>-dynamiclib</linkerStartOption>
+                    </linkerStartOptions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
