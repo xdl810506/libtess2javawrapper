@@ -1,0 +1,1 @@
+libtess2 java APIs 目前是基于float型的，如果需要double型的API，需要首先更改src/main/libtess2/Include/tesselator.h 里面typedef float TESSreal; 到 typedef double TESSreal;
